@@ -1,0 +1,51 @@
+//
+// Prefix header for all source files of the 'Timepass' target in the 'Timepass' project
+//
+
+#import <Availability.h>
+
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "MKNetworkKit.h"
+    #import "TimepassAppDelegate.h"
+    #import "SingletonUser.h"
+    #import "MBProgressHUD.h"
+	#import "UIImageView+AFNetworking.h"
+
+NSMutableArray *arrFriend;
+NSMutableArray *arrFacebookFriend;
+NSMutableArray *arrNonFacebookFriends;
+
+static NSString* shareMessageForAll = @"I would really like to invite you to a Tymepass event. We can share our calendars and share our events, parties, & meet-ups! Join me on Tymepass! http://tymepass.com/download";
+
+static NSString* shareMessageForTwitter = @"I would really like to invite you to a Tymepass event. http://tymepass.com/download";
+
+#endif
+
+#ifdef DEBUG
+    #define debugLog(...) NSLog(__VA_ARGS__)
+#else
+    #define debugLog(...)
+#endif
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#define kOAuthConsumerKey        @"qbv5u7uM9JJ2YONyyH51Q"
+#define kOAuthConsumerSecret     @"56I3pUk3dlSUFlUUdUWcfEgt4fAARO9feNcrQ2YAkk"
+
+typedef enum apiCall {
+    kAPIGraphMe,
+    fbAPIGetAppUsersFriendsNotUsing,
+    fbAPIGetAppUsersFriendsUsing
+} apiCall;
